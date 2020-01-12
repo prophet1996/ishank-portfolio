@@ -5,7 +5,7 @@ import { useTheme } from "../hooks/useTheme";
 
 const ButtonIconWrapper = styled(animated.button)`
   border: none;
-  color: ${({ themeState }) => (themeState.dark ? `white` : "black")};
+  color: ${({ themestate }) => (themestate.dark ? `white` : "black")};
   font-size: large;
   background: none;
   float: right;
@@ -25,7 +25,7 @@ export default props => {
   return (
     <ButtonIconWrapper
       className={props.className}
-      themeState={themeState}
+      themestate={themeState}
       onClick={themeState.toggle}
     >
       {transitions.map(({ item, key, props }) =>
