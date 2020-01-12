@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useEffect } from "react";
+import "./App.css";
+import styled from "styled-components";
+import ThemeChangeButton from "./components/ThemeChangeButton";
+const AppWrapper = styled.div`
+  background: ${props => props.theme.background};
+  width: 100vw;
+  height: 100vh;
+  color: ${props => props.theme.body};
+`;
+const CommandStyles = styled.span`
+  display: block;
+  color: ${props => props.theme.body};
+  font-weight: 700;
+  margin: 2em 0;
+  & > input[type="text"] {
+    background: ${props => props.theme.background};
+    color: ${props => props.theme.body};
+  }
+`;
 
 function App() {
+  const mainRef = useRef(null);
+  useEffect(() => {
+    mainRef.current.focus();
+  }, [mainRef]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper onClick={() => mainRef.current.focus()} className="App">
+      <div>
+        <ThemeChangeButton></ThemeChangeButton>
+      </div>
+      <main>
+        <CommandStyles>
+          ishank.web.dev:/$ <input type="text" ref={mainRef} />
+        </CommandStyles>
+      </main>
+    </AppWrapper>
   );
 }
 

@@ -1,38 +1,89 @@
 .App {
-  text-align: center;
+  text-align: start;
+  width: 100vw;
+  overflow-x: hidden;
+}
+@import url(https://fonts.googleapis.com/css?family=Inconsolata:400, 700);
+html {
+  background: #fff;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font: 0.875em/1.6 "Inconsolata", monospace;
+  color: #181818;
+  font-weight: 400;
+  max-width: 28em;
+}
+::selection {
+  background: #eee;
+}
+::-webkit-selection {
+  background: #eee;
+}
+::-moz-selection {
+  background: #eee;
+}
+a {
+  color: #181818;
+}
+a:hover,
+a:focus {
+  background: #181818;
+  color: #fff;
+}
+h2 {
+  font-size: 1em;
+  font-weight: 400;
+}
+p {
+  margin-bottom: 2em;
+}
+abbr {
+  cursor: help;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin: 1em 0 0;
+}
+span {
+  display: block;
+  color: #999;
+  line-height: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+kbd {
+  font-family: "Inconsolata", monospace;
+  border: 1px solid #999;
+  text-transform: uppercase;
+  padding: 0 0.2em;
+}
+input[type="text"] {
+  max-width: 10em;
+  border: none;
+  font-family: inherit;
+  background: #fff;
+  padding: 0 0.5em;
+  font-size: smaller;
+}
+input[type="text"]:focus {
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+.command {
+  display: block;
+  color: #181818;
+  font-weight: 700;
+  margin: 2em 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+section {
+  display: none;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.open {
+  display: block;
 }
