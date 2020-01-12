@@ -10,7 +10,20 @@ const AppWrapper = styled.div`
   color: ${props => props.theme.body};
 `;
 
-// const commandLineHistoryStyles =
+const CommandLineHistoryStyles = styled.span`
+  display: flex;
+  flex-direction: row;
+  color: ${props => props.theme.body};
+  font-weight: 700;
+  margin: 1.1em 1em;
+  & > span {
+    background: ${props => props.theme.background};
+    color: ${props => props.theme.body};
+    font-size: smaller;
+    padding: 0 0.5em;
+    font-weight: 400;
+  }
+`;
 function App() {
   const mainRef = useRef(null);
   useEffect(() => {
@@ -29,7 +42,12 @@ function App() {
       </div>
       <main>
         {commandLineHistory &&
-          commandLineHistory.map(history => <div>{history}</div>)}
+          commandLineHistory.map(({ prefix, command }) => (
+            <CommandLineHistoryStyles>
+              {prefix}
+              <span>{command}</span>
+            </CommandLineHistoryStyles>
+          ))}
         <CommandLineInput
           inputRef={mainRef}
           shiftTerminalInput={shiftTerminalInput}
