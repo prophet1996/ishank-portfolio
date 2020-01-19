@@ -4,10 +4,12 @@ import { Keyframes } from "react-spring/renderprops";
 
 const FadedSpan = styled.span`
   color: ${props => props.theme.bodyFade};
+  padding-top: 0.1em;
 `;
 const HighlightedSpan = styled.span`
   border: 1px solid ${props => props.theme.body};
   border-radius: 2px;
+  padding: 0.1em;
   display: block;
   color: ${props => props.theme.body};
   margin: 0em 1.2em;
