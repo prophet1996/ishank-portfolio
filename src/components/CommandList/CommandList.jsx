@@ -9,7 +9,6 @@ const StyledCommand = styled(animated.div)`
   padding: 1em;
   animation: blinker 2s linear infinite;
   &:hover {
-    animation: none;
     box-shadow: 0px 0px 4px 1.5px ${props => props.theme.highLight};
   }
   @keyframes blinker {
