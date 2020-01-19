@@ -1,7 +1,6 @@
 import React from "react";
 import { WELCOME_MESSAGE } from "../../constants";
 import { useTransition, animated } from "react-spring";
-
 import styled from "styled-components";
 
 const StyledWelcomeMessage = styled.div`

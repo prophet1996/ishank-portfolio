@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import AnimatedMessage from "./_AnimatedMessage";
+import CommandList from "ishank-portfolio/src/components/CommandList";
 
 const StyledSpan = styled(NavLink)`
   color: ${props => props.theme.body};
@@ -46,6 +47,7 @@ const Tutorial = () => {
         </StyledWelcome>
       ))}
       <AnimatedMessage />
+      <CommandList />
     </Fragment>
   );
 };
