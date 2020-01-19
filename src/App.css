@@ -3,10 +3,14 @@
   width: 100vw;
   overflow-x: hidden;
 }
-@import url(https://fonts.googleapis.com/css?family=Inconsolata:400, 700);
+@import url(
+  https://fonts.googleapis.com/css?family=Inconsolata:400,
+  700&display=swap
+);
 html {
   background: #fff;
   overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 body {

@@ -5,13 +5,20 @@ import { useTheme } from "../hooks/useTheme";
 
 const ButtonIconWrapper = styled(animated.button)`
   border: none;
-  color: ${({ themestate }) => (themestate.dark ? `white` : "black")};
+  color: ${props => props.theme.body};
+  background-color: ${props => props.theme.background};
   font-size: large;
-  background: none;
   float: right;
+  border-radius: 4px;
   margin: 1.2rem;
   font-size: 1.2rem;
   font-weight: 700;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 0.5rem 0.7rem;
+  z-index: 99999;
+  border: 2px solid ${props => props.theme.highLight};
 `;
 
 export default props => {
@@ -29,7 +36,7 @@ export default props => {
       onClick={themeState.toggle}
     >
       {transitions.map(({ item, key, props }) =>
-        themeState.dark ? "🔅" : "☾"
+        !themeState.dark ? "🔅" : "☾"
       )}
     </ButtonIconWrapper>
   );

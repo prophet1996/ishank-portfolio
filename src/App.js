@@ -1,58 +1,47 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { Suspense, lazy, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import "./App.css";
 import styled from "styled-components";
 import ThemeChangeButton from "./components/ThemeChangeButton";
-import CommandLineInput from "./components/CommandLineInput";
+import Tutorial from "./components/Tutorial";
+import Home from "./components/Home";
+
 const AppWrapper = styled.div`
   background: ${props => props.theme.background};
   width: 100vw;
   height: 100vh;
   color: ${props => props.theme.body};
 `;
+const Resume = lazy(() => import("./routes/Resume"));
+const Resume2 = lazy(() => import("./routes/Resume"));
 
-const CommandLineHistoryStyles = styled.span`
-  display: flex;
-  flex-direction: row;
-  color: ${props => props.theme.body};
-  font-weight: 700;
-  margin: 1.1em 1em;
-  & > span {
-    background: ${props => props.theme.background};
-    color: ${props => props.theme.body};
-    font-size: smaller;
-    padding: 0 0.5em;
-    font-weight: 400;
-  }
-`;
 function App() {
-  const mainRef = useRef(null);
-  useEffect(() => {
-    mainRef.current.focus();
-  }, [mainRef]);
-
-  const [commandLineHistory, setcommandLineHistory] = useState([]);
-
-  const shiftTerminalInput = newInput =>
-    setcommandLineHistory([...commandLineHistory, newInput]);
-  const clearCommandLineHistory = () => setcommandLineHistory([]);
+  const [focusOnInput, setInputFocus] = useState(true);
+  const focusOnInputHandler = () => {
+    setInputFocus(!focusOnInput);
+  };
   return (
-    <AppWrapper onClick={() => mainRef.current.focus()} className="App">
-      <div>
-        <ThemeChangeButton></ThemeChangeButton>
-      </div>
+    <AppWrapper onClick={focusOnInputHandler} className="App">
       <main>
-        {commandLineHistory &&
-          commandLineHistory.map(({ prefix, command }) => (
-            <CommandLineHistoryStyles>
-              {prefix}
-              <span>{command}</span>
-            </CommandLineHistoryStyles>
-          ))}
-        <CommandLineInput
-          inputRef={mainRef}
-          shiftTerminalInput={shiftTerminalInput}
-          clearCommandLineHistory={clearCommandLineHistory}
-        ></CommandLineInput>
+        <div>
+          <ThemeChangeButton></ThemeChangeButton>
+        </div>
+
+        <Router>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => <Home focusOnInput={focusOnInput} />}
+              />
+              <Route exact path="/resume" component={Resume} />
+              <Route exact path="/about" component={Resume2} />
+              <Route exact path="/tutorial" component={Tutorial} />
+            </Switch>
+          </Suspense>
+        </Router>
       </main>
     </AppWrapper>
   );
