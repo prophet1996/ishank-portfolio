@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
 import Suggestions from "../Suggestions/Suggestions";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Redirect } from "react-router-dom";
 import Typist from "react-typist";
 import CommandLineInput from "../CommandLineInput";
@@ -17,6 +17,30 @@ const CommandLineHistoryStyles = styled.span`
     font-size: smaller;
     padding: 0 0.5em;
     font-weight: 400;
+  }
+`;
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const StyledTypist = styled(Typist)`
+  display: flex;
+  flex-direction: row;
+  color: ${props => props.theme.body};
+  font-weight: 700;
+  margin: 1.2em 1.2em;
+  & > p {
+    margin: 0px;
+    font-weight: normal;
+  }
+  & > span {
+    line-height: 1.6;
+    animation: 1s ${fadeIn} infinite ease-out;
   }
 `;
 
@@ -51,17 +75,14 @@ const Home = props => {
           </CommandLineHistoryStyles>
         ))}
       {showHelp && (
-        <Typist
+        <StyledTypist
           style={{ display: "none" }}
           hideWhenDone
-          onTypingDone={() => {
-            setHelpShown(true);
-            return setShowHelp(false);
-          }}
+          onTypingDone={() => setHelpShown(true)}
         >
           Hi, I'm IshankS.
           <p> I like to design and build software</p>
-        </Typist>
+        </StyledTypist>
       )}
       {(helpShown || !showHelp) && (
         <CommandLineInput
