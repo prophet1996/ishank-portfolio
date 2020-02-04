@@ -70,7 +70,6 @@ input[type="text"] {
   border: none;
   font-family: inherit;
   background: #fff;
-  padding: 0 0.5em;
   font-size: smaller;
 }
 input[type="text"]:focus {

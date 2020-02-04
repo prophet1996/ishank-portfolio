@@ -13,12 +13,22 @@ const CommandLineStyles = styled.span`
 `;
 
 export default props => {
-  const { inputRef, shiftTerminalInput, clearCommandLineHistory } = props;
+  const {
+    inputRef,
+    shiftTerminalInput,
+    clearCommandLineHistory,
+    setShowHelp,
+    setHelpShown
+  } = props;
   const prefix = `ishank.web.dev:/$ `;
   const _handleKeyDown = e => {
     if (inputRef.current.value === "") return;
     if (e.key === "Enter") {
       shiftTerminalInput({ prefix, command: inputRef.current.value });
+      if (inputRef.current.value.toLowerCase() === `\\h`) {
+        setHelpShown(false);
+        setShowHelp(true);
+      }
       if (inputRef.current.value.toLowerCase() === "clear") {
         clearCommandLineHistory();
       }
@@ -34,6 +44,7 @@ export default props => {
       inputRef.current.value = "";
     }
   };
+
   return (
     <CommandLineStyles>
       {prefix}

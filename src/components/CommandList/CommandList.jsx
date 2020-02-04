@@ -2,12 +2,15 @@ import React from "react";
 import { useTransition, animated } from "react-spring";
 import { COMMAND_LIST } from "../../constants";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledCommand = styled(animated.div)`
   cursor: pointer;
   border-radius: 3px;
   padding: 1em;
+  color: ${props => props.theme.body};
   animation: blinker 2s linear infinite;
+  text-decoration: none;
   &:hover {
     box-shadow: 0px 0px 4px 1.5px ${props => props.theme.highLight};
   }
@@ -36,9 +39,11 @@ const CommandList = props => {
   return (
     <StyledCommandList>
       {transitions.map(({ item, key, props }) => (
-        <StyledCommand key={key} style={props}>
-          {item.name}
-        </StyledCommand>
+        <Link to={item.route} style={{ textDecoration: "none" }}>
+          <StyledCommand key={key} style={props} title={item.description}>
+            {item.name}
+          </StyledCommand>
+        </Link>
       ))}
     </StyledCommandList>
   );

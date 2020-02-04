@@ -38,7 +38,7 @@ const Suggestions = props => {
       <Container>
         {styles => (
           <HighlightedSpan onClick={props.handleShowTutorial} style={styles}>
-            Click for a tutorial
+            Click for my resume
           </HighlightedSpan>
         )}
       </Container>

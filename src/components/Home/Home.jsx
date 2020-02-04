@@ -2,6 +2,7 @@ import React, { Fragment, useState, useRef, useEffect } from "react";
 import Suggestions from "../Suggestions/Suggestions";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
+import Typist from "react-typist";
 import CommandLineInput from "../CommandLineInput";
 
 const CommandLineHistoryStyles = styled.span`
@@ -23,7 +24,8 @@ const Home = props => {
   const mainRef = useRef(null);
   const [commandLineHistory, setcommandLineHistory] = useState([]);
   const [showTutorial, setShowTutorial] = useState(false);
-
+  const [showHelp, setShowHelp] = useState(false);
+  const [helpShown, setHelpShown] = useState(false);
   const shiftTerminalInput = newInput =>
     setcommandLineHistory([...commandLineHistory, newInput]);
   const clearCommandLineHistory = () => setcommandLineHistory([]);
@@ -43,16 +45,33 @@ const Home = props => {
 
       {commandLineHistory &&
         commandLineHistory.map(({ prefix, command }) => (
-          <CommandLineHistoryStyles>
+          <CommandLineHistoryStyles key={prefix + command}>
             {prefix}
             <span>{command}</span>
           </CommandLineHistoryStyles>
         ))}
-      <CommandLineInput
-        inputRef={mainRef}
-        shiftTerminalInput={shiftTerminalInput}
-        clearCommandLineHistory={clearCommandLineHistory}
-      ></CommandLineInput>
+      {showHelp && (
+        <Typist
+          style={{ display: "none" }}
+          hideWhenDone
+          onTypingDone={() => {
+            setHelpShown(true);
+            return setShowHelp(false);
+          }}
+        >
+          Hi, I'm IshankS.
+          <p> I like to design and build software</p>
+        </Typist>
+      )}
+      {(helpShown || !showHelp) && (
+        <CommandLineInput
+          inputRef={mainRef}
+          setShowHelp={setShowHelp}
+          setHelpShown={setHelpShown}
+          shiftTerminalInput={shiftTerminalInput}
+          clearCommandLineHistory={clearCommandLineHistory}
+        ></CommandLineInput>
+      )}
     </Fragment>
   );
 };

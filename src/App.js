@@ -6,6 +6,7 @@ import styled from "styled-components";
 import ThemeChangeButton from "./components/ThemeChangeButton";
 import Tutorial from "./components/Tutorial";
 import Home from "./components/Home";
+import Showcase from "./components/Showcase";
 
 const AppWrapper = styled.div`
   background: ${props => props.theme.background};
@@ -39,6 +40,7 @@ function App() {
               <Route exact path="/resume" component={Resume} />
               <Route exact path="/about" component={Resume2} />
               <Route exact path="/tutorial" component={Tutorial} />
+              <Route exact path="/showcase" component={Showcase} />
             </Switch>
           </Suspense>
         </Router>
