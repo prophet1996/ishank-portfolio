@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
 import Suggestions from "../Suggestions/Suggestions";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { Redirect } from "react-router-dom";
 import Typist from "react-typist";
 import CommandLineInput from "../CommandLineInput";
@@ -19,14 +19,6 @@ const CommandLineHistoryStyles = styled.span`
     font-weight: 400;
   }
 `;
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
 
 const StyledTypist = styled(Typist)`
   display: flex;
@@ -39,8 +31,7 @@ const StyledTypist = styled(Typist)`
     font-weight: normal;
   }
   & > span {
-    line-height: 1.6;
-    animation: 1s ${fadeIn} infinite ease-out;
+    display: none;
   }
 `;
 

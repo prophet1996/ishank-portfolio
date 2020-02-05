@@ -3,19 +3,19 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import styled from "styled-components";
-import ThemeChangeButton from "./components/ThemeChangeButton";
-import Tutorial from "./components/Tutorial";
-import Home from "./components/Home";
-import Showcase from "./components/Showcase";
-
+import ThemeChangeButton from "ishank-portfolio/src/components/ThemeChangeButton";
+import Tutorial from "ishank-portfolio/src/components/Tutorial";
+import Home from "ishank-portfolio/src/components/Home";
+import Showcase from "ishank-portfolio/src/components/Showcase";
+import Logo from "ishank-portfolio/src/logo";
 const AppWrapper = styled.div`
   background: ${props => props.theme.background};
   width: 100vw;
   height: 100vh;
   color: ${props => props.theme.body};
 `;
-const Resume = lazy(() => import("./routes/Resume"));
-const Resume2 = lazy(() => import("./routes/Resume"));
+const Resume = lazy(() => import("ishank-portfolio/src/routes/Resume"));
+const Resume2 = lazy(() => import("ishank-portfolio/src/routes/Resume"));
 
 function App() {
   const [focusOnInput, setInputFocus] = useState(true);
@@ -28,7 +28,9 @@ function App() {
         <div>
           <ThemeChangeButton></ThemeChangeButton>
         </div>
-
+        <div>
+          <Logo />
+        </div>
         <Router>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
