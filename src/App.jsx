@@ -7,7 +7,7 @@ import ThemeChangeButton from "ishank-portfolio/src/components/ThemeChangeButton
 import Tutorial from "ishank-portfolio/src/components/Tutorial";
 import Home from "ishank-portfolio/src/components/Home";
 import Showcase from "ishank-portfolio/src/components/Showcase";
-import Logo from "ishank-portfolio/src/logo";
+import Logo from "./logo";
 const AppWrapper = styled.div`
   background: ${props => props.theme.background};
   width: 100vw;
