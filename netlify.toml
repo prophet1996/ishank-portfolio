@@ -1,7 +1,7 @@
+[build]
+  base = "/"
+
 [[redirects]]
-  from = "/resume"
-  to = "/"
+  from = "/*"
+  to = "/index.html"
   status = 200
-  force = false
-  query = {path = ":path"}
-  conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
