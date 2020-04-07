@@ -18,6 +18,7 @@ export const ContactInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
+
   & > span {
     margin: auto 0;
   }
@@ -64,14 +65,19 @@ export const SummaryText: any = styled.p`
   }}
 `;
 
-export const SkillWrapper = styled.div`
+export const SkillWrapper: any = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: repeat(${({ rows = 2 }: any) => rows}, 1fr);
+  grid-gap: 10px;
   margin-top: 2em;
   @media ${(props) => props.theme.deviceMax.tablet} {
     margin-top: 0;
   }
 `;
 
-export const SkillBox = styled.div``;
+export const SkillBox: any = styled.div`
+  @media ${(props) => props.theme.deviceMax.mobileM} {
+    padding-top: 1em;
+  }
+`;
