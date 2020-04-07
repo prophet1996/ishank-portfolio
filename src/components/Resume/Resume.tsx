@@ -100,6 +100,120 @@ export default (props: ResumeProps) => {
 
             </SkillWrapper>
             <ResumeHeading
+                heading={"Experience"}
+                underline
+                bold
+                size={3}
+            ></ResumeHeading>
+
+            <SkillWrapper rows={2}>
+                <SkillBox>
+
+                    <ResumeHeading
+                        heading={"Analyst Programmer"}
+                        underline={false}
+                        bold
+                        size={2}
+                    ></ResumeHeading>
+                    <ResumeHeading
+                        heading={"Infosys"}
+                        underline={false}
+                        size={1}
+                        bold
+                    ></ResumeHeading>
+                    <SummaryText size={'s'}>
+                        Currently working on React.js/Node.js
+                        as a Full Stack developer on a banking
+                        application with a focus on security and
+                        accessibility.
+                    </SummaryText>
+
+                </SkillBox>
+                <SkillBox>
+
+                    <ResumeHeading
+                        heading={"FullStack Web Dev"}
+                        underline={false}
+                        bold
+                        size={2}
+                    ></ResumeHeading>
+                    <ResumeHeading
+                        heading={"Innov8"}
+                        underline={false}
+                        size={1}
+                        bold
+                    ></ResumeHeading>
+                    <SummaryText size={'s'}>
+                        Gained extensive knowledge of JS for
+                        Front End and Back-end to create an in-
+                        house E.R.P solution that ranged from
+                        inventory management to HR solutions,
+                        using Node.js /React.js
+                    </SummaryText>
+
+                </SkillBox>
+                <SkillBox>
+
+                    <ResumeHeading
+                        heading={"Android Developer"}
+                        underline={false}
+                        bold
+                        size={2}
+                    ></ResumeHeading>
+                    <ResumeHeading
+                        heading={"WV & Rec"}
+                        underline={false}
+                        size={1}
+                        bold
+                    ></ResumeHeading>
+                    <SummaryText size={'s'}>
+                        Started out as an intern and moved on
+                        to production application for their
+                        product.
+</SummaryText>
+
+                </SkillBox>
+            </SkillWrapper>
+            <ResumeHeading
+                heading={"Certifications"}
+                underline
+                bold
+                size={3}
+            ></ResumeHeading>
+            <SkillWrapper rows={1}>
+                <SkillBox
+                >
+
+                    <ResumeHeading
+                        heading={"Microsoft, 2019"}
+                        underline={false}
+                        bold
+                        size={2}
+                    ></ResumeHeading>
+
+                    <SummaryText size={'s'}>
+                        Microsoft Certified HTML/CSS/JS developer.
+                    </SummaryText>
+
+                </SkillBox>
+                <SkillBox>
+
+                    <ResumeHeading
+                        heading={"Udacity , 2018"}
+                        underline={false}
+                        bold
+                        size={2}
+                    ></ResumeHeading>
+
+                    <SummaryText size={'s'}>
+                        Google India Scholar for Udacity
+                        Mobile Web Specialist.
+                    </SummaryText>
+
+                </SkillBox>
+
+            </SkillWrapper>
+            <ResumeHeading
                 heading={"Methodologies"}
                 underline
                 bold
@@ -142,81 +256,6 @@ export default (props: ResumeProps) => {
 
                 </SkillBox>
 
-            </SkillWrapper>
-            <ResumeHeading
-                heading={"EXPERIENCE"}
-                underline
-                bold
-                size={3}
-            ></ResumeHeading>
-
-            <SkillWrapper rows={2}>
-                <SkillBox>
-
-                    <ResumeHeading
-                        heading={"Analyst Programmer"}
-                        underline={false}
-                        bold
-                        size={2}
-                    ></ResumeHeading>
-                    <ResumeHeading
-                        heading={"Infosys"}
-                        underline={false}
-                        size={1}
-                        bold
-                    ></ResumeHeading>
-                    <SummaryText size={'s'}>
-                        Currently working on React.js/Node.js
-                        as a Full Stack developer on a banking
-                        application with a focus on security and
-                        accessibility.
-                    </SummaryText>
-
-                </SkillBox>
-                <SkillBox>
-
-                    <ResumeHeading
-                        heading={"Full Stack Web Dev"}
-                        underline={false}
-                        bold
-                        size={2}
-                    ></ResumeHeading>
-                    <ResumeHeading
-                        heading={"Innov8"}
-                        underline={false}
-                        size={1}
-                        bold
-                    ></ResumeHeading>
-                    <SummaryText size={'s'}>
-                        Gained extensive knowledge of JS for
-                        Front End and Back-end to create an in-
-                        house E.R.P solution that ranged from
-                        inventory management to HR solutions,
-                        using Node.js /React.js
-                    </SummaryText>
-
-                </SkillBox>
-                <SkillBox>
-
-                    <ResumeHeading
-                        heading={"Android Developer"}
-                        underline={false}
-                        bold
-                        size={2}
-                    ></ResumeHeading>
-                    <ResumeHeading
-                        heading={"WV & Rec"}
-                        underline={false}
-                        size={1}
-                        bold
-                    ></ResumeHeading>
-                    <SummaryText size={'s'}>
-                        Started out as an intern and moved on
-                        to production application for their
-                        product.
-</SummaryText>
-
-                </SkillBox>
             </SkillWrapper>
         </ResumeWrapper>
     );

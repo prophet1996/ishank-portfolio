@@ -66,6 +66,7 @@ export const SummaryText: any = styled.p`
 `;
 
 export const SkillWrapper: any = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(${({ rows = 2 }: any) => rows}, 1fr);
