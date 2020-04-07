@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useTheme } from "./hooks/useTheme";
-import theme from "./theme/theme";
+import theme from "./theme/theme.ts";
 
-const Logo = props => {
+const Logo = (props) => {
   const { dark } = useTheme();
   const themeState = dark ? theme("dark") : theme("light");
   return (

@@ -11,16 +11,16 @@ const StyledWelcome = styled(animated.pre)`
   font-family: Monospace;
   white-space: pre;
   text-align: center;
-  margin: 2em;
+  margin: 10vh 2em 0 2em;
 `;
 
 const Tutorial = () => {
-  const transitions = useTransition([WELCOME_TEXT], item => item.key, {
+  const transitions = useTransition([WELCOME_TEXT], (item) => item.key, {
     from: { transform: "translate3d(0,-40px,0)" },
     enter: { transform: "translate3d(0,0px,0)" },
-    leave: { transform: "translate3d(0,-40px,0)" }
+    leave: { transform: "translate3d(0,-40px,0)" },
   });
-  console.log(BackButton);
+
   return (
     <Fragment>
       <BackButton></BackButton>

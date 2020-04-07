@@ -11,15 +11,14 @@ const StyledWelcomeMessage = styled.div`
 `;
 
 const WelcomeMessageTextItem = styled(animated.span)`
-  margin-right: 1.5em;
+  text-align: center;
 `;
-const WELCOME_MESSAGE_ITEMS = WELCOME_MESSAGE.split(" ");
 
-const AnimatedMessage = props => {
-  const transitions = useTransition(WELCOME_MESSAGE_ITEMS, item => item, {
+const AnimatedMessage = (props) => {
+  const transitions = useTransition(WELCOME_MESSAGE, (item) => item, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 1 }
+    leave: { opacity: 1 },
   });
 
   return (
