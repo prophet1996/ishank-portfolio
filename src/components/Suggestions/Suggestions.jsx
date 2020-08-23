@@ -41,7 +41,7 @@ const Container = Keyframes.Spring(async (next, cancel, ownProps) => {
 const Suggestions = (props) => {
   return (
     <StyledSuggestion>
-      <FadedSpan> >_ Type \h for help or </FadedSpan>
+      <FadedSpan> &gt;_ Type \h for help or </FadedSpan>
       <Container>
         {(styles) => (
           <HighlightedSpan onClick={props.handleShowTutorial} style={styles}>
