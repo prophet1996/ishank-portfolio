@@ -45,6 +45,7 @@
   },
   "proxy": "http://localhost:5000/",
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.5",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.2"
   }
