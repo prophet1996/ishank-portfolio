@@ -18,5 +18,5 @@ const StyledSpan = styled(NavLink)`
   z-index: 99999;
   border-radius: 4px;
 `;
-const BackButton = (props) => <StyledSpan to="/">{"<"}</StyledSpan>;
+const BackButton = ({prevLink}:{prevLink:string}) => <StyledSpan to={`/${prevLink}`}>{"<"}</StyledSpan>;
 export default BackButton;

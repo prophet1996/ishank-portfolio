@@ -23,7 +23,7 @@ const Tutorial = () => {
 
   return (
     <Fragment>
-      <BackButton></BackButton>
+      <BackButton prevLink=""></BackButton>
       {transitions.map(({ item, props, key }) => (
         <StyledWelcome style={props} key={key}>
           {item}

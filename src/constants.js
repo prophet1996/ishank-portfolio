@@ -23,6 +23,7 @@ Following are a few things you could do.
 `;
 
 export const COMMAND_LIST = [
+  { name: "Web UI Widgets", description: "command 3 desc",route:"/widgets" },
   {
     name: "Showcase",
     description: "Show a list sample projects",
@@ -33,7 +34,6 @@ export const COMMAND_LIST = [
     description: "Displays my resume on the screen",
     route: "/resume",
   },
-  { name: "command 3", description: "command 3 desc" },
   { name: "command 4", description: "command 4 desc" },
 ];
 

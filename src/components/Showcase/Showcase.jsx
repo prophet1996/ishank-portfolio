@@ -6,7 +6,7 @@ import { ShowcaseWrapper } from "./_styles";
 const Showcase = (props) => {
   return (
     <ShowcaseWrapper>
-      <BackButton />
+      <BackButton prevLink="tutorial"/>
       {CODE_SANDBOX_SHOWCASE[0].link}
     </ShowcaseWrapper>
   );

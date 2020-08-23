@@ -16,6 +16,7 @@ const AppWrapper = styled.div`
 `;
 const Resume = lazy(() => import("./routes/Resume"));
 const Resume2 = lazy(() => import("./routes/Resume"));
+const Widgets = lazy(() => import("./routes/Widgets"));
 
 function App() {
   const [focusOnInput, setInputFocus] = useState(true);
@@ -43,6 +44,7 @@ function App() {
               <Route exact path="/about" component={Resume2} />
               <Route exact path="/tutorial" component={Tutorial} />
               <Route exact path="/showcase" component={Showcase} />
+              <Route exact path="/widgets" component={Widgets} />
             </Switch>
           </Suspense>
         </Router>

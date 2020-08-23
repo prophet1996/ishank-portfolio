@@ -23,7 +23,7 @@ const Logo = (props) => {
         height="54"
         fill={themeState.background}
         stroke={themeState.body}
-        stroke-width="4"
+        strokeWidth="4"
       />
       <path
         id="_ishanks"

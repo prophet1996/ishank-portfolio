@@ -8,7 +8,7 @@ export default (props: ResumeProps) => {
 
     return (
         <ResumeWrapper>
-            <BackButton />
+            <BackButton prevLink="tutorial"/>
             <ResumeHeading
                 heading={"Ishank Sharma"}
                 underline

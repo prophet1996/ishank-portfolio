@@ -35,6 +35,18 @@ const deviceMax = {
   desktopL: `(max-width: ${size.desktop})`,
 };
 
+const spacing = (...args: (string | number)[]) => {
+  return args.reduce((acc, arg) => {
+    if (typeof arg === "string") {
+      return `${acc} ${arg}`;
+    } else {
+      if(arg>8)
+      console.warn("Spacing May be too large!");
+      return `${acc} ${Math.pow(2, arg)}px`;
+    }
+  }, "");
+};
+
 const themeLight = {
   background: white,
   body: black,
@@ -42,6 +54,7 @@ const themeLight = {
   highLight: "#1de9b6",
   device,
   deviceMax,
+  spacing,
 };
 
 const themeDark = {
@@ -51,6 +64,7 @@ const themeDark = {
   highLight: "#1565c0",
   device,
   deviceMax,
+  spacing,
 };
 
 const theme = (mode: string): Theme =>
