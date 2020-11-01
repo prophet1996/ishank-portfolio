@@ -1,5 +1,3 @@
 import React from 'react';
 
-export default ()=>{
-    return <div>Buttons</div>
-}
+export default () => <div>Buttons</div>;

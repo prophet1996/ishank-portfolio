@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const ShowcaseWrapper = styled.div`
+const ShowcaseWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,3 +13,7 @@ export const ShowcaseWrapper = styled.div`
     height: 50vh;
   }
 `;
+
+export default {
+  ShowcaseWrapper,
+};

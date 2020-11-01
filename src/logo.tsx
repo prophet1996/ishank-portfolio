@@ -1,14 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { useTheme } from "./hooks/useTheme";
-import theme from "./theme/theme.ts";
+import React from 'react';
+import styled from 'styled-components';
+import { useTheme } from './hooks/useTheme';
+import theme from './theme/theme';
 
-const Logo = (props) => {
+type LogoProps = {className:string};
+
+const Logo = (props:LogoProps) => {
   const { dark } = useTheme();
-  const themeState = dark ? theme("dark") : theme("light");
+  const { className } = props;
+  const themeState = dark ? theme('dark') : theme('light');
   return (
     <svg
-      className={props.className}
+      className={className}
       width="100"
       height="54"
       viewBox="-16 0 189 83"

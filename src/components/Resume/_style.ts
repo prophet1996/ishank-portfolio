@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ResumeWrapper = styled.div`
   display: flex;
@@ -59,8 +59,12 @@ export const SummaryText: any = styled.p`
   }
   ${(props: any) => {
     switch (props.size?.toLowerCase()) {
-      case "s":
-        return `font-size:1em;`;
+    case 's':
+      return 'font-size:1em;';
+    default: {
+      console.warn('Font size is wrong');
+      return '';
+    }
     }
   }}
 `;

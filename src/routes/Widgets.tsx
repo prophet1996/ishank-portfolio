@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import BackButton from "../components/shared/BackButton";
-import { Tabs } from "../components/Widgets";
+import React from 'react';
+import styled from 'styled-components';
+import BackButton from '../components/shared/BackButton';
+import { Tabs } from '../components/Widgets';
 
 const StyledTabs = styled(Tabs)``;
 const Wrapper = styled.div`
@@ -10,11 +10,9 @@ const Wrapper = styled.div`
   justify-content: center;
   align-content: center;
 `;
-export default () => {
-  return (
-    <Wrapper>
-      <BackButton prevLink="tutorial" />
-      <StyledTabs></StyledTabs>
-    </Wrapper>
-  );
-};
+export default () => (
+  <Wrapper>
+    <BackButton prevLink="tutorial" />
+    <StyledTabs />
+  </Wrapper>
+);

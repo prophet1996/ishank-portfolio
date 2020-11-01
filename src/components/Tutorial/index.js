@@ -1,2 +1,3 @@
-import Tutorial from "./Tutorial";
+import Tutorial from './Tutorial';
+
 export default Tutorial;

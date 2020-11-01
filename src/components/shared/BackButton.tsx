@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 const StyledSpan = styled(NavLink)`
   color: ${(props) => props.theme.body};
@@ -18,5 +18,5 @@ const StyledSpan = styled(NavLink)`
   z-index: 99999;
   border-radius: 4px;
 `;
-const BackButton = ({prevLink}:{prevLink:string}) => <StyledSpan to={`/${prevLink}`}>{"<"}</StyledSpan>;
+const BackButton = ({ prevLink }:{prevLink:string}) => <StyledSpan to={`/${prevLink}`}>{'<'}</StyledSpan>;
 export default BackButton;

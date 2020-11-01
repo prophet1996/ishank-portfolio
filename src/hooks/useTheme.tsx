@@ -1,6 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { ThemeProvider as StyledThemeProvider } from "styled-components";
-import theme from "../theme/theme.ts";
+import React, {
+  createContext, useContext, useState, useEffect,
+} from 'react';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import theme from '../theme/theme';
+
 const defaultContextData = {
   dark: false,
   toggle: () => {},
@@ -15,26 +18,26 @@ const useEffectDarkMode = () => {
     hasThemeMounted: false,
   });
   useEffect(() => {
-    const lsDark = localStorage.getItem("dark") === "true";
+    const lsDark = localStorage.getItem('dark') === 'true';
     setThemeState({ ...themeState, dark: lsDark, hasThemeMounted: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [themeState.dark]);
-  return [themeState, setThemeState];
+  return [themeState, setThemeState] as const;
 };
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children }:{children:any}) => {
   const [themeState, setThemeState] = useEffectDarkMode();
   if (!themeState.hasThemeMounted) {
-    //Show nothing while theme is loading on localStorage
+    // Show nothing while theme is loading on localStorage
     return <div />;
   }
   const toggle = () => {
     const dark = !themeState.dark;
-    localStorage.setItem("dark", JSON.stringify(dark));
+    localStorage.setItem('dark', JSON.stringify(dark));
     setThemeState({ ...themeState, dark });
   };
 
-  const computedTheme = themeState.dark ? theme("dark") : theme("light");
+  const computedTheme = themeState.dark ? theme('dark') : theme('light');
   return (
     <StyledThemeProvider theme={computedTheme}>
       <ThemeContext.Provider value={{ dark: themeState.dark, toggle }}>

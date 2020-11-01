@@ -1,2 +1,2 @@
-export { default as ResumeHeading } from "./ResumeHeading";
-export { default as Svg } from "./Svg";
+export { default as ResumeHeading } from './ResumeHeading';
+export { default as Svg } from './Svg';

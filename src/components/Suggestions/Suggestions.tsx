@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Keyframes } from "react-spring/renderprops";
+import React from 'react';
+import styled from 'styled-components';
+import { Keyframes } from 'react-spring/renderprops';
 
 const FadedSpan = styled.span`
   color: ${(props) => props.theme.bodyFade};
@@ -27,8 +27,9 @@ const StyledSuggestion = styled.div`
     flex-wrap: wrap;
   }
 `;
-const Container = Keyframes.Spring(async (next, cancel, ownProps) => {
+const Container: any = Keyframes.Spring(async (next) => {
   while (true) {
+    /* eslint-disable no-await-in-loop */
     await next({
       from: { opacity: 1 },
       to: { opacity: 0.5 },
@@ -38,18 +39,16 @@ const Container = Keyframes.Spring(async (next, cancel, ownProps) => {
   }
 });
 
-const Suggestions = (props) => {
-  return (
-    <StyledSuggestion>
-      <FadedSpan> &gt;_ Type \h for help or </FadedSpan>
-      <Container>
-        {(styles) => (
-          <HighlightedSpan onClick={props.handleShowTutorial} style={styles}>
-            Click for my resume
-          </HighlightedSpan>
-        )}
-      </Container>
-    </StyledSuggestion>
-  );
-};
+const Suggestions = (props: any) => (
+  <StyledSuggestion>
+    <FadedSpan> &gt;_ Type \h for help or </FadedSpan>
+    <Container>
+      {(styles) => (
+        <HighlightedSpan onClick={props.handleShowTutorial} style={styles}>
+          Click for my resume
+        </HighlightedSpan>
+      )}
+    </Container>
+  </StyledSuggestion>
+);
 export default Suggestions;
