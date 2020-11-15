@@ -41,10 +41,13 @@ const store = (set) => ({
   cd: (pathToDir :string) => set((state: FSState) => {
     const pathArr = pathToDir.split('/').reverse();
     const { fs: { root } } = state;
+    let tempDir = root;
+
     while (pathArr.length > 0) {
       const popedDir = pathArr.pop();
-      const matchedDir = root.children.find(({ name }: FileState) => name === popedDir);
+      const matchedDir = tempDir.children.find(({ name }: FileState) => name === popedDir);
       if (!matchedDir) return false;
+      if (matchedDir) tempDir = matchedDir;
     }
     state.currentDir = pathToDir;
     return true;
