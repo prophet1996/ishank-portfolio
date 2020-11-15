@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-// @ts-nocheck
 import React from 'react';
 import styled from 'styled-components';
+import useFS from '../hooks/useFS';
 import Plugins from '../plugins';
 
 const CommandLineStyles = styled.span`
@@ -23,7 +23,8 @@ export default (props:any) => {
     setShowHelp,
     setHelpShown,
   } = props;
-  const prefix = 'ishank.web.dev:/$ ';
+  const { currentDir } = useFS();
+  const prefix = `ishank.web.dev:~$/${currentDir === '/' ? '' : currentDir}`;
   const handleKeyDown = (e) => {
     if (inputRef.current.value === '') return;
     if (e.key === 'Enter') {

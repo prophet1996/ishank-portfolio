@@ -22,8 +22,9 @@ const store = (set) => ({
   ...initialFSState,
   mkdir: (pathToDir) => set((state: FSState) => {
     if (pathToDir.length === 0) return false;
-    const pathArr = pathToDir.split('/').reverse();
-    const { fs: { root } } = state;
+    const { fs: { root }, currentDir } = state;
+    const pathArr = (currentDir === '/' ? pathToDir : `${currentDir}/${pathToDir}`).split('/').reverse();
+
     let tempDir = root;
     let popedDir;
     const popedDirFind = ({ name }: FileState) => name === popedDir;
@@ -39,8 +40,8 @@ const store = (set) => ({
     return true;
   }),
   cd: (pathToDir :string) => set((state: FSState) => {
-    const pathArr = pathToDir.split('/').reverse();
-    const { fs: { root } } = state;
+    const { fs: { root }, currentDir } = state;
+    const pathArr = (currentDir === '/' ? pathToDir : `${currentDir}/${pathToDir}`).split('/').reverse();
     let tempDir = root;
 
     while (pathArr.length > 0) {
@@ -49,9 +50,11 @@ const store = (set) => ({
       if (!matchedDir) return false;
       if (matchedDir) tempDir = matchedDir;
     }
-    state.currentDir = pathToDir;
+    if (currentDir === '/') state.currentDir = `${pathToDir}`;
+    else state.currentDir += `/${pathToDir}`;
     return true;
   }),
+  ls: 1,
 });
 
 export default create(store);
