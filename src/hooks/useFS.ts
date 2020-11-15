@@ -5,40 +5,49 @@ import { nanoid } from 'nanoid';
 import { FSState, FileState, PERMISSION } from '../types';
 
 const initialFSState: FSState = {
-  fs: [{
-    name: '/',
-    children: [],
-    id: '/',
-  }],
-  permission: PERMISSION.ROOT,
+  fs: {
+    root: {
+      name: '/',
+      children: [],
+      id: '/',
+    },
+  },
   currentDir: '/',
+  permission: PERMISSION.ROOT,
 };
 
 // export const immer = (config) => (set, get) => config((fn) => set(produce(fn)), get);
 
 const store = (set) => ({
-  fs: initialFSState,
-  mkdir: ({ name }) => set((state) => {
-    const { currentDir, fs: { children = [] } } = state;
-    const queue :FileState[][] = [];
-    queue.push(children);
-    while (queue.length > 0) {
-      const currChildren = queue.pop();
-      const childQueue:FileState[] = [];
-      currChildren?.forEach((currChild) => {
-        if (currentDir === currChild?.id) {
-          currChild?.children.push({
-            name,
-            children: [],
-            id: nanoid(),
-          });
-          return;
-        }
-        currChild?.children.forEach((child :FileState) => childQueue.push(child));
-      });
-      if (childQueue.length > 0) queue.push(childQueue);
+  ...initialFSState,
+  mkdir: (pathToDir) => set((state: FSState) => {
+    if (pathToDir.length === 0) return false;
+    const pathArr = pathToDir.split('/').reverse();
+    const { fs: { root } } = state;
+    let tempDir = root;
+    let popedDir;
+    const popedDirFind = ({ name }: FileState) => name === popedDir;
+    while (pathArr.length > 0) {
+      popedDir = pathArr.pop();
+      const matchedDir = tempDir.children.find(popedDirFind);
+      // match not found and the path is still left failure
+      if (!matchedDir && pathArr.length !== 0) return false;
+      // match found update the temp root dir
+      if (matchedDir) tempDir = matchedDir;
     }
-    // console.log(name, state);
+    tempDir.children.push({ name: popedDir, children: [], id: nanoid() });
+    return true;
+  }),
+  cd: (pathToDir :string) => set((state: FSState) => {
+    const pathArr = pathToDir.split('/').reverse();
+    const { fs: { root } } = state;
+    while (pathArr.length > 0) {
+      const popedDir = pathArr.pop();
+      const matchedDir = root.children.find(({ name }: FileState) => name === popedDir);
+      if (!matchedDir) return false;
+    }
+    state.currentDir = pathToDir;
+    return true;
   }),
 });
 

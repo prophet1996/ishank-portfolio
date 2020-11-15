@@ -19,7 +19,7 @@ export enum PERMISSION {
 }
 
 export interface FSState {
-  fs: FileState[],
+  fs: { root: FileState, }
   permission: PERMISSION,
-  currentDir: '/',
+  currentDir: string,
 }
