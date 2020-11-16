@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 import useFSStore from '../hooks/useFS';
 
 const LS: React.FC<{ args: string[] }> = ({ args }: { args: string[] }) => {
-  const { fs, ls } = useFSStore();
-  //   const pathToDir = args[0] || '';
-  console.log('LS:', args);
-  console.log('LS:', fs, ls);
-
+    let { fs: { root } } = useFSStore();
+    const {currentDir } = useFSStore();
+    
+    while (root) {
+        
+    }
   useEffect(() => {
-    // ls(pathToDir);
+
   }, []);
   // debugger;
-  return (<div>..</div>);
+  return (<div>{children.map(({ name }) => name)}</div>);
 };
 
 export default LS;

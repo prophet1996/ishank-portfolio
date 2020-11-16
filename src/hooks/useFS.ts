@@ -54,7 +54,6 @@ const store = (set) => ({
     else state.currentDir += `/${pathToDir}`;
     return true;
   }),
-  ls: 1,
 });
 
 export default create(store);
