@@ -23,7 +23,8 @@ export default (props:any) => {
     setShowHelp,
     setHelpShown,
   } = props;
-  const { currentDir } = useFS();
+  const fsStore = useFS();
+  const { currentDir } = fsStore;
   const prefix = `ishank.web.dev:~$/${currentDir === '/' ? '' : currentDir}`;
   const handleKeyDown = (e) => {
     if (inputRef.current.value === '') return;
@@ -55,8 +56,7 @@ export default (props:any) => {
         if (Plugins[invokedCommand.toUpperCase()]) {
           shiftTerminalInput({
             prefix: '',
-            Render: Plugins[invokedCommand.toUpperCase()],
-            args,
+            render: Plugins[invokedCommand.toUpperCase()](fsStore, args),
             command: invokedCommand,
           });
         } else {

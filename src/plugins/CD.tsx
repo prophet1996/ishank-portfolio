@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
-import useFSStore from '../hooks/useFS';
 
-const CD: React.FC<{ args: string[] }> = ({ args }: { args: string[] }) => {
-  const { fs, cd } = useFSStore();
-  const pathToDir = args[0] || '';
+const CD = (fsStore, args) => {
+  const { fs, cd } = fsStore;
+  const [pathToDir] = args;
   console.log('CD:', args);
   console.log('CD:', fs, cd);
 
-  useEffect(() => {
-    cd(pathToDir);
-  }, []);
+  cd(pathToDir);
+  return `cd ${pathToDir}`;
   // debugger;
-  return (<div>..</div>);
 };
-
 
 export default CD;

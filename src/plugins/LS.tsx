@@ -1,18 +1,7 @@
-import React, { useEffect } from 'react';
-import useFSStore from '../hooks/useFS';
+// import { getCurrDir } from '../hooks/useFS';
 
-const LS: React.FC<{ args: string[] }> = ({ args }: { args: string[] }) => {
-    let { fs: { root } } = useFSStore();
-    const {currentDir } = useFSStore();
-    
-    while (root) {
-        
-    }
-  useEffect(() => {
+import { getCurrDir } from '../hooks/useFS';
 
-  }, []);
-  // debugger;
-  return (<div>{children.map(({ name }) => name)}</div>);
-};
+const LS = (fsStore): string => getCurrDir(fsStore).children.reduce((acc, curr) => `${acc} ${curr.name}`, '');
 
 export default LS;

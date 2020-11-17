@@ -1,19 +1,14 @@
-import React, { useEffect } from 'react';
-import useFSStore from '../hooks/useFS';
+import { FSState } from '../types';
 
-const MKDIR: React.FC<{ args: string[] }> = ({ args }: { args: string[] }) => {
-  const { fs, mkdir } = useFSStore();
-  const pathToDir = args[0] || '';
-  console.log('mkdir:', args);
-  console.log('mkdir:', fs, mkdir);
+const MKDIR = (fsStore: FSState, args=[]:string[]): string => {
+  const { fs, mkdir, currentDir } = fsStore;
+  const [pathToDir] = args;
+  console.log('MKDIR:', args);
+  console.log('MKDIR:', fs, mkdir);
 
-  useEffect(() => {
-    mkdir(pathToDir);
-  }, []);
+  mkdir(pathToDir);
+  return `creating directory ${pathToDir} in ${currentDir}`;
   // debugger;
-  return (<div>..</div>);
 };
-
-MKDIR.whyDidYouRender = true;
 
 export default MKDIR;

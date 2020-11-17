@@ -23,3 +23,8 @@ export interface FSState {
   permission: PERMISSION,
   currentDir: string,
 }
+
+export interface FSStore extends FSState {
+  mkdir:(_:string)=>void,
+  cd:(_:string)=>void,
+}

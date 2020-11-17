@@ -56,4 +56,19 @@ const store = (set) => ({
   }),
 });
 
+export const getCurrDir = (state): FileState => {
+  const { fs: { root = {} } = {}, currentDir } = state;
+  if (currentDir === '/') return root;
+  const pathArr = currentDir.split('/').reverse();
+  let tempDir = root;
+
+  while (pathArr.length > 0) {
+    const popedDir = pathArr.pop();
+    const matchedDir = tempDir.children.find(({ name }: FileState) => name === popedDir);
+    if (!matchedDir) return { name: '', children: [], id: '' };
+    if (matchedDir) tempDir = matchedDir;
+  }
+
+  return tempDir;
+};
 export default create(store);
