@@ -28,6 +28,7 @@ const StyledSuggestion = styled.div`
   }
 `;
 const Container: any = Keyframes.Spring(async (next) => {
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     /* eslint-disable no-await-in-loop */
     await next({
