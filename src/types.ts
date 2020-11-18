@@ -24,7 +24,10 @@ export interface FSState {
   currentDir: string,
 }
 
-export interface FSStore extends FSState {
-  mkdir:(_:string)=>void,
-  cd:(_:string)=>void,
-}
+export type FSStore ={
+  fs: { root: FileState, }
+  permission: PERMISSION,
+  currentDir: string,
+  mkdir: (_: string) => void,
+  cd: (_: string) => void,
+};

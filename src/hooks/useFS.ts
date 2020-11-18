@@ -2,7 +2,9 @@
 import create from 'zustand';
 // import produce from 'immer';
 import { nanoid } from 'nanoid';
-import { FSState, FileState, PERMISSION } from '../types';
+import {
+  FSState, FileState, PERMISSION, FSStore,
+} from '../types';
 
 const initialFSState: FSState = {
   fs: {
@@ -18,7 +20,8 @@ const initialFSState: FSState = {
 
 // export const immer = (config) => (set, get) => config((fn) => set(produce(fn)), get);
 
-const store = (set) => ({
+// eslint-disable-next-line no-unused-vars
+const store:(set:any)=>FSStore = (set) => ({
   ...initialFSState,
   mkdir: (pathToDir) => set((state: FSState) => {
     if (pathToDir.length === 0) return false;
@@ -41,6 +44,12 @@ const store = (set) => ({
   }),
   cd: (pathToDir :string) => set((state: FSState) => {
     const { fs: { root }, currentDir } = state;
+    if (pathToDir === '..') {
+      const pathArr = state.currentDir.split('/');
+      const currDir = pathArr.slice(0, pathArr.length - 1).join('/');
+      state.currentDir = currDir || '/';
+      return true;
+    }
     const pathArr = (currentDir === '/' ? pathToDir : `${currentDir}/${pathToDir}`).split('/').reverse();
     let tempDir = root;
 
