@@ -62,7 +62,6 @@ export const SummaryText: any = styled.p`
     case 's':
       return 'font-size:1em;';
     default: {
-      console.warn('Font size is wrong');
       return '';
     }
     }

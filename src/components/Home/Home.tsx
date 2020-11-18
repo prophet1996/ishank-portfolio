@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom';
 import Typist from 'react-typist';
 import Suggestions from '../Suggestions/Suggestions';
 import CommandLineInput from '../CommandLineInput';
-import useTerminal from '../../hooks/useTerminal';
 
 const CommandLineHistoryStyles = styled.span`
   display: flex;
@@ -45,7 +44,6 @@ const Home = ({ mainRef }: any) => {
   const [helpShown, setHelpShown] = useState(false);
   const shiftTerminalInput = (newInput) => setcommandLineHistory([...commandLineHistory, newInput]);
   const clearCommandLineHistory = () => setcommandLineHistory([]);
-  const { terminal } = useTerminal();
   const handleShowTutorial = useCallback(() => {
     setShowTutorial(!showTutorial);
   }, []);
@@ -56,7 +54,6 @@ const Home = ({ mainRef }: any) => {
   const handleTypingDone = useCallback(
     () => setHelpShown(true), [],
   );
-  console.log(terminal);
   const commandLineHistoryElements = commandLineHistory.map(({
     // eslint-disable-next-line no-unused-vars
     prefix, command, render,
