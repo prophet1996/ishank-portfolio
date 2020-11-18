@@ -1,4 +1,3 @@
-
 const CD = (fsStore, args) => {
   const { fs, cd } = fsStore;
   const [pathToDir] = args;
@@ -7,7 +6,6 @@ const CD = (fsStore, args) => {
 
   cd(pathToDir);
   return `cd ${pathToDir}`;
-  // debugger;
 };
 
 export default CD;
